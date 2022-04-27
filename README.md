@@ -7,6 +7,6 @@ Topik        : Game Checkers
 Kelompok     : 3
 
 Nama Anggota :
-- Afif Dwi Ardhiansyah
-- Gaudhiwaa Hendrasto
-- Beryl
+- Muhammad Afif Dwi Ardhiansyah / 5025201212
+- Gaudhiwaa Hendrasto / 5025201066
+- Beryl / 5025201029
