@@ -39,10 +39,13 @@ class Game:
             
         return False
 
+    # pion pindah
     def _move(self, row, col):
         piece = self.board.get_piece(row, col)
         if self.selected and piece == 0 and (row, col) in self.valid_moves:
             self.board.move(self.selected, row, col)
+            pygame.draw.circle(self.win, GREEN, (col * SQUARE_SIZE + SQUARE_SIZE//2, row * SQUARE_SIZE + SQUARE_SIZE//2), 15)
+            # self.board.move(self.selected, row+1, col)
             skipped = self.valid_moves[(row, col)]
             if skipped:
                 self.board.remove(skipped)

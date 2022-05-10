@@ -8,8 +8,9 @@ class Board:
         self.black_kings = self.white_kings = 0
         self.create_board()
     
+    # gambar kotak bidak
     def draw_squares(self, win):
-        win.fill(BOARDB)
+        # win.fill(BOARDB)
         for row in range(ROWS):
             for col in range(row % 2, COLS, 2):
                 pygame.draw.rect(win, BLACK, (row*SQUARE_SIZE, col *SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
@@ -178,7 +179,8 @@ class Piece:
 
     def make_king(self):
         self.king = True
-    
+
+    # gambar pion
     def draw(self, win):
         radius = SQUARE_SIZE//2 - self.PADDING
         pygame.draw.circle(win, GREY, (self.x, self.y), radius + self.OUTLINE)
