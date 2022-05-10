@@ -2,12 +2,19 @@
 import pygame
 from constant import WIDTH, HEIGHT, SQUARE_SIZE, BLACK, WHITE
 from game import Game
+from gamemenu import GameMenu
 from algorithm import minimax
+
+gm = GameMenu()
 
 FPS = 60
 
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Checkers VS AI')
+
+while gm.running:
+    gm.curr_menu.display_menu()
+    #gm.game_loop()
 
 def get_row_col_from_mouse(pos):
     x, y = pos
