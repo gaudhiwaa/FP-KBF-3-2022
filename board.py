@@ -1,4 +1,5 @@
 import pygame
+import random
 from constant import BOARDB, ROWS, BLACK, SQUARE_SIZE, COLS, WHITE, CROWN, GREY
 
 class Board:
@@ -6,6 +7,7 @@ class Board:
         self.board = []
         self.black_left = self.white_left = 12
         self.black_kings = self.white_kings = 0
+        self.random = True
         self.create_board()
     
     def draw_squares(self, win):
@@ -39,17 +41,42 @@ class Board:
     def get_piece(self, row, col):
         return self.board[row][col]
 
+    def set_random(self, set):
+        self.randomrandom = set
+
+    def get_random(self):
+        return self.random
+
     def create_board(self):
+        black = 0
+        white = 0
         for row in range(ROWS):
             self.board.append([])
             for col in range(COLS):
                 if col % 2 == ((row +  1) % 2):
-                    if row < 3:
-                        self.board[row].append(Piece(row, col, WHITE))
-                    elif row > 4:
-                        self.board[row].append(Piece(row, col, BLACK))
+                    if self.get_random() == False:
+                        if row < 3:
+                           self.board[row].append(Piece(row, col, WHITE))
+                        elif row > 4:
+                            self.board[row].append(Piece(row, col, BLACK))
+                        else:
+                            self.board[row].append(0)
                     else:
-                        self.board[row].append(0)
+                        r = random.randint(1, 3)
+                        if r == 1:
+                            self.board[row].append(0)
+                        elif r == 2:
+                            white = white + 1
+                            if white <= 12:
+                                self.board[row].append(Piece(row, col, WHITE))
+                            else:
+                                self.board[row].append(0)
+                        elif r == 3:
+                            black = black + 1
+                            if black <= 12:
+                                self.board[row].append(Piece(row, col, BLACK))  
+                            else:
+                                self.board[row].append(0)                      
                 else:
                     self.board[row].append(0)
         
