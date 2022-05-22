@@ -1,20 +1,21 @@
 import pygame
 from constant import BLACK, WHITE, GREEN, SQUARE_SIZE
-from board import Board
+from board import Board, Piece
 
 class Game:
-    def __init__(self, win):
-        self._init()
+    def __init__(self, win, set_random):
+        self._init(set_random)
         self.win = win
     
     def update(self):
         self.board.draw(self.win)
         self.draw_valid_moves(self.valid_moves)
         pygame.display.update()
+        # Piece.check_king(Piece)
 
-    def _init(self):
+    def _init(self, set_random):
         self.selected = None
-        self.board = Board()
+        self.board = Board(set_random)
         self.turn = BLACK
         self.valid_moves = {}
 

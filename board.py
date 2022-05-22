@@ -3,15 +3,15 @@ import random
 from constant import BOARDB, ROWS, BLACK, SQUARE_SIZE, COLS, WHITE, CROWN, GREY
 
 class Board:
-    def __init__(self):
+    def __init__(self, random_game):
         self.board = []
         self.black_left = self.white_left = 12
         self.black_kings = self.white_kings = 0
-        self.random = True
+        self.random = random_game
         self.create_board()
     
     def draw_squares(self, win):
-        win.fill(BOARDB)
+        # win.fill(BOARDB)
         for row in range(ROWS):
             for col in range(row % 2, COLS, 2):
                 pygame.draw.rect(win, BLACK, (row*SQUARE_SIZE, col *SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
@@ -41,9 +41,6 @@ class Board:
     def get_piece(self, row, col):
         return self.board[row][col]
 
-    def set_random(self, set):
-        self.randomrandom = set
-
     def get_random(self):
         return self.random
 
@@ -62,21 +59,22 @@ class Board:
                         else:
                             self.board[row].append(0)
                     else:
-                        r = random.randint(1, 3)
+                        r = random.randint(1, 6)
+                                                  
                         if r == 1:
-                            self.board[row].append(0)
-                        elif r == 2:
                             white = white + 1
                             if white <= 12:
                                 self.board[row].append(Piece(row, col, WHITE))
                             else:
                                 self.board[row].append(0)
-                        elif r == 3:
+                        elif r == 2:
                             black = black + 1
                             if black <= 12:
                                 self.board[row].append(Piece(row, col, BLACK))  
                             else:
-                                self.board[row].append(0)                      
+                                self.board[row].append(0)   
+                        else:
+                            self.board[row].append(0)               
                 else:
                     self.board[row].append(0)
         
@@ -86,6 +84,7 @@ class Board:
             for col in range(COLS):
                 piece = self.board[row][col]
                 if piece != 0:
+                    piece.check_king(self)
                     piece.draw(win)
 
     def remove(self, pieces):
@@ -205,6 +204,14 @@ class Piece:
 
     def make_king(self):
         self.king = True
+
+    def check_king(self, board):
+        if self.color == WHITE and self.row == ROWS - 1:
+            self.king = True
+            board.white_kings += 1
+        elif self.color == BLACK and self.row == 0:
+            self.king = True
+            board.black_kings += 1 
     
     def draw(self, win):
         radius = SQUARE_SIZE//2 - self.PADDING

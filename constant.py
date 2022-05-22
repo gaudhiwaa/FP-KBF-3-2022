@@ -1,14 +1,12 @@
+import imghdr
 import pygame
 
-WIDTH, HEIGHT = 700, 700
+WIDTH, HEIGHT = 500, 700
 ROWS, COLS = 8, 8
 SQUARE_SIZE = WIDTH//COLS
 
-# RED = (255, 0, 0)
-# WHITE = (255, 255, 255)
-# BLACK = (0, 0, 0)
-# BLUE = (0, 0, 255)
-# GREY = (128,128,128)
+WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+FPS = 60
 
 BOARDA = (250, 232, 167)
 BOARDB = (140, 125, 71)
@@ -18,4 +16,6 @@ RED = (255, 0, 0)
 GREEN = (20, 255, 0)
 GREY = (128,128,128)
 
-CROWN = pygame.transform.scale(pygame.image.load('assets/crown.png'), (44, 25))
+CROWN = pygame.transform.scale(pygame.image.load('assets/crown.png'), (SQUARE_SIZE/2, SQUARE_SIZE/2))
+random_img = pygame.transform.scale(pygame.image.load('assets/random.png'),(SQUARE_SIZE, SQUARE_SIZE))
+restart_img = pygame.transform.scale(pygame.image.load('assets/restart.png'),(SQUARE_SIZE, SQUARE_SIZE))
