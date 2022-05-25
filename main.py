@@ -1,6 +1,6 @@
 # Assets: https://techwithtim.net/wp-content/uploads/2020/09/assets.zip
 import pygame
-from constant import SQUARE_SIZE, BLACK, WHITE, WIDTH, random_img, BOARDB, WIN, FPS, restart_img
+from constant import SQUARE_SIZE, BLACK, WHITE, WIDTH, random_img, BOARDB, WIN, FPS, restart_img, easy_img, medium_img, hard_img
 from game import Game
 from algorithm import minimax
 from button import Button
@@ -9,6 +9,9 @@ pygame.display.set_caption('Checkers VS AI')
 
 random_button = Button(0, WIDTH, random_img)
 restart_button = Button(0, WIDTH+SQUARE_SIZE, restart_img)
+easy_button = Button(200, 500, easy_img)
+medium_button = Button(200, 550, medium_img)
+hard_button = Button(200, 600, hard_img)
 
 def get_row_col_from_mouse(pos):
     x, y = pos
@@ -20,6 +23,7 @@ def main():
     run = True
     clock = pygame.time.Clock()
     game = Game(WIN, False)
+    depth = 1
 
     while run:
         clock.tick(FPS)
@@ -30,6 +34,18 @@ def main():
 
         if restart_button.draw(WIN):
             game = Game(WIN, False)
+
+        if easy_button.draw(WIN):
+            print('Easy')
+            depth = 1
+        
+        if medium_button.draw(WIN):
+            print('Medium')
+            depth = 3
+
+        if hard_button.draw(WIN):
+            print('Hard')
+            depth = 4
 
         if game.turn == WHITE:
             value, new_board = minimax(game.get_board(), 3, WHITE, game)
