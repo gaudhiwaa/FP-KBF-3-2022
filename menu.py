@@ -1,5 +1,6 @@
 import pygame
 from game import Game
+from constant import PURPLE
 
 class Menu():
     def __init__(self, game, win):
@@ -34,7 +35,7 @@ class MainMenu(Menu):
         while self.run_display:
             self.game.check_events()
             self.check_input()
-            self.game.display.fill(self.game.BLACK)
+            self.game.display.fill(self.game.PURPLE)
             self.game.draw_text('Checkers', 40, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 100)
             self.game.draw_text('VS', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 70)
             self.game.draw_text('AI', 40, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 40)

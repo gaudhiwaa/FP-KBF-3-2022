@@ -1,5 +1,6 @@
 # Assets: https://techwithtim.net/wp-content/uploads/2020/09/assets.zip
 import pygame
+from pygame import mixer
 from constant import WIDTH, BOARDA, SQUARE_SIZE, BOARDB, WHITE, FPS, WIN, PADDING, random_img, restart_img, easy_img, medium_img, hard_img
 from game import Game
 from gamemenu import GameMenu
@@ -7,6 +8,10 @@ from algorithm import minimax
 from button import Button
 
 pygame.display.set_caption('Checkers VS AI')
+
+mixer.init()
+mixer.music.load('assets/AthleticTheme.wav')
+mixer.music.play(-1)
 
 random_button = Button(PADDING, WIDTH, random_img)
 restart_button = Button(PADDING, WIDTH+SQUARE_SIZE, restart_img)
@@ -34,7 +39,7 @@ def main():
         
          # level text        
         pygame.init()
-        font = pygame.font.Font('freesansbold.ttf', 20)
+        font = pygame.font.Font('assets/8-BIT WONDER.TTF', 16)
         textLevel = font.render('Level :'+ level, True, BOARDA)
 
         # if gm.get_run_main() == False:

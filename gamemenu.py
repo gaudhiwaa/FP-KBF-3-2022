@@ -23,7 +23,7 @@ class GameMenu():
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = 'assets/8-BIT WONDER.TTF'
-        self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
+        self.PURPLE, self.WHITE = (10,3,11), (255, 255, 255)
         self.main_menu = MainMenu(self, self.win)
         self.options = OptionsMenu(self, self.win)
         self.credits = CreditsMenu(self, self.win)

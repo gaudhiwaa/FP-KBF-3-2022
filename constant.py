@@ -21,6 +21,7 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (20, 255, 0)
 GREY = (128,128,128)
+PURPLE = (10,3,11)
 
 CROWN = pygame.transform.scale(pygame.image.load('assets/crown.png'), (SQUARE_SIZE/2, SQUARE_SIZE/2))
 random_img = pygame.transform.scale(pygame.image.load('assets/random.png'),(SQUARE_SIZE, SQUARE_SIZE))
