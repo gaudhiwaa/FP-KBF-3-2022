@@ -1,5 +1,5 @@
 import pygame
-from constant import BLACK, WHITE, GREEN, SQUARE_SIZE
+from constant import BLACK, WHITE, GREEN, SQUARE_SIZE, WIDTH, HEIGHT, BOARDA
 from board import Board, Piece
 
 class Game:
@@ -71,3 +71,14 @@ class Game:
     def ai_move(self, board):
         self.board = board
         self.change_turn()
+
+    def text_exit(self):
+        pygame.init()
+        self.font = pygame.font.Font('freesansbold.ttf', 32)
+        self.textExit = self.font.render('Main Menu', True, BOARDA)
+        self.textRect = self.textExit.get_rect()
+        self.textRect.center = (0, WIDTH+SQUARE_SIZE)
+    
+    def get_text_exit(self):
+        self.text_exit()
+        return self.textExit

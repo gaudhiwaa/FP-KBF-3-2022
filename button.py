@@ -4,10 +4,11 @@ from constant import WIDTH, HEIGHT
 
 class Button():
     def __init__(self, x, y, image):
-        print("random!!!!")
+        # print("random!!!!")
         self.image = image
         self.rect = self.image.get_rect()
         self.rect.topleft = (x,y)
+        self.clicked = False
 
     def draw(self, win):
         action = False
