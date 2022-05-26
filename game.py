@@ -1,10 +1,10 @@
 import pygame
-from constant import BLACK, WHITE, GREEN, SQUARE_SIZE
+from constant import BLACK, WHITE, GREEN, SQUARE_SIZE, BOARDA, WIDTH
 from board import Board
 
 class Game:
-    def __init__(self, win):
-        self._init()
+    def __init__(self, win, set_random):
+        self._init(set_random)
         self.win = win
     
     def update(self):
@@ -12,9 +12,9 @@ class Game:
         self.draw_valid_moves(self.valid_moves)
         pygame.display.update()
 
-    def _init(self):
+    def _init(self, set_random):
         self.selected = None
-        self.board = Board()
+        self.board = Board(set_random)
         self.turn = BLACK
         self.valid_moves = {}
 
@@ -70,3 +70,14 @@ class Game:
     def ai_move(self, board):
         self.board = board
         self.change_turn()
+    
+    def text_exit(self):
+        pygame.init()
+        self.font = pygame.font.Font('freesansbold.ttf', 32)
+        self.textExit = self.font.render('Main Menu', True, BOARDA)
+        self.textRect = self.textExit.get_rect()
+        self.textRect.center = (0, WIDTH+SQUARE_SIZE)
+    
+    def get_text_exit(self):
+        self.text_exit()
+        return self.textExit

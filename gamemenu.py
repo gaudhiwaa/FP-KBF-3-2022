@@ -14,8 +14,9 @@ def get_row_col_from_mouse(pos):
         return row, col
 
 class GameMenu():
-    def __init__(self):
+    def __init__(self, win):
         pygame.init()
+        self.win = win
         self.running, self.playing = True, False
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
         self.DISPLAY_W, self.DISPLAY_H = 700, 700
@@ -23,12 +24,13 @@ class GameMenu():
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = 'assets/8-BIT WONDER.TTF'
         self.BLACK, self.WHITE = (0, 0, 0), (255, 255, 255)
-        self.main_menu = MainMenu(self)
-        self.options = OptionsMenu(self)
-        self.credits = CreditsMenu(self)
+        self.main_menu = MainMenu(self, self.win)
+        self.options = OptionsMenu(self, self.win)
+        self.credits = CreditsMenu(self, self.win)
         self.curr_menu = self.main_menu
 
-    
+    def get_run_main(self):
+        return self.main_menu.get_play()
 
     def game_loop(self):
         clock = pygame.time.Clock()
@@ -83,6 +85,8 @@ class GameMenu():
                     self.DOWN_KEY = True
                 if event.key == pygame.K_UP:
                     self.UP_KEY = True
+            if self.get_run_main() == True:
+                self.playing = True
 
     def reset_keys(self):
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False

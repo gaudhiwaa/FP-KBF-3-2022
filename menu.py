@@ -1,13 +1,14 @@
 import pygame
-
+from game import Game
 
 class Menu():
-    def __init__(self, game):
+    def __init__(self, game, win):
         self.game = game
         self.mid_w, self.mid_h = self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2
         self.run_display = True
         self.cursor_rect = pygame.Rect(0, 0, 20, 20)
         self.offset = - 100
+        self.win = win
 
     def draw_cursor(self):
         self.game.draw_text('*', 15, self.cursor_rect.x, self.cursor_rect.y)
@@ -18,13 +19,15 @@ class Menu():
         self.game.reset_keys()
 
 class MainMenu(Menu):
-    def __init__(self, game):
-        Menu.__init__(self, game)
+    def __init__(self, game, win):
+        self.win = win
+        Menu.__init__(self, game, self.win)        
         self.state = "Start"
         self.startx, self.starty = self.mid_w, self.mid_h + 50
         self.optionsx, self.optionsy = self.mid_w, self.mid_h + 70
         self.creditsx, self.creditsy = self.mid_w, self.mid_h + 90
         self.cursor_rect.midtop = (self.startx + self.offset, self.starty)
+        self.play = False
 
     def display_menu(self):
         self.run_display = True
@@ -69,15 +72,22 @@ class MainMenu(Menu):
         if self.game.START_KEY:
             if self.state == 'Start':
                 self.game.playing = True
+                print("Test")
+                # game = Game(self.win)
+                self.play = True
             elif self.state == 'Options':
                 self.game.curr_menu = self.game.options
             elif self.state == 'Credits':
                 self.game.curr_menu = self.game.credits
             self.run_display = False
+    
+    def get_play(self):
+        return self.play
 
 class OptionsMenu(Menu):
-    def __init__(self, game):
-        Menu.__init__(self, game)
+    def __init__(self, game, win):
+        self.win = win
+        Menu.__init__(self, game, self.win)
         self.state = 'Volume'
         self.volx, self.voly = self.mid_w, self.mid_h + 20
         self.controlsx, self.controlsy = self.mid_w, self.mid_h + 40
@@ -111,8 +121,9 @@ class OptionsMenu(Menu):
             pass
 
 class CreditsMenu(Menu):
-    def __init__(self, game):
-        Menu.__init__(self, game)
+    def __init__(self, game, win):
+        self.win = win
+        Menu.__init__(self, game, self.win)
 
     def display_menu(self):
         self.run_display = True
