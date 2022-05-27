@@ -52,9 +52,11 @@ def main():
             if play == False:
                 game = Game(WIN, False)
                 play = True
-
-            exit_button = Button(WIDTH//2+SQUARE_SIZE, WIDTH+(SQUARE_SIZE+PADDING)*2, game.get_text_exit())
-            WIN.blit(textLevel, (PADDING, WIDTH+(SQUARE_SIZE+PADDING)*2)) 
+                
+            #exit_button = Button(WIDTH//2+SQUARE_SIZE, WIDTH+(SQUARE_SIZE+PADDING)*2, game.get_text_exit())
+            #WIN.blit(textLevel, (PADDING, WIDTH+(SQUARE_SIZE+PADDING)*2)) 
+            exit_button = Button(WIDTH//2+SQUARE_SIZE+40, WIDTH+(SQUARE_SIZE+PADDING)*2+30, game.get_text_exit())
+            WIN.blit(textLevel, (WIDTH//2+SQUARE_SIZE-10, WIDTH+SQUARE_SIZE-60)) 
             WIN.blit(textLevelEasy, (155, 505))      
             WIN.blit(textLevelMedium, (155, 552)) 
 

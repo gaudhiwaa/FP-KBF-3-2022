@@ -19,7 +19,7 @@ class GameMenu():
         self.win = win
         self.running, self.playing = True, False
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
-        self.DISPLAY_W, self.DISPLAY_H = 700, 700
+        self.DISPLAY_W, self.DISPLAY_H = 500, 700
         self.display = pygame.Surface((self.DISPLAY_W,self.DISPLAY_H))
         self.window = pygame.display.set_mode(((self.DISPLAY_W,self.DISPLAY_H)))
         self.font_name = 'assets/8-BIT WONDER.TTF'
