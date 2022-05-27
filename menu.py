@@ -133,7 +133,7 @@ class CreditsMenu(Menu):
             if self.game.START_KEY or self.game.BACK_KEY:
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
-            self.game.display.fill(self.game.BLACK)
+            self.game.display.fill((0, 0, 0))
             self.game.draw_text('Credits', 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
             self.game.draw_text('Muhammad Afif Dwi Ardhiansyah / 5025201212', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 10)
             self.game.draw_text('Gaudhiwaa Hendrasto / 5025201066', 15, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 30)
