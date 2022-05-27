@@ -73,10 +73,10 @@ class Game:
     
     def text_exit(self):
         pygame.init()
-        self.font = pygame.font.Font('assets/8-BIT WONDER.TTF', 32)
+        self.font = pygame.font.Font('assets/8-BIT WONDER.TTF', 16)
         self.textExit = self.font.render('Main Menu', True, BOARDA)
         self.textRect = self.textExit.get_rect()
-        self.textRect.center = (0, WIDTH+SQUARE_SIZE)
+        self.textRect.center = (100, WIDTH+SQUARE_SIZE)
     
     def get_text_exit(self):
         self.text_exit()

@@ -15,11 +15,13 @@ FPS = 60
 # GREY = (128,128,128)
 
 BOARDA = (250, 232, 167)
-BOARDB = (140, 125, 71)
+BOARDB = (234, 172, 139)
 WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
+# warna bidak gelap
+BLACK = (229, 107, 111)
 RED = (255, 0, 0)
-GREEN = (20, 255, 0)
+# warna possible move
+GREEN = (20, 255, 255)
 GREY = (128,128,128)
 PURPLE = (10,3,11)
 

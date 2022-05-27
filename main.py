@@ -15,9 +15,9 @@ mixer.music.play(-1)
 
 random_button = Button(PADDING, WIDTH, random_img)
 restart_button = Button(PADDING, WIDTH+SQUARE_SIZE, restart_img)
-easy_button = Button(200, 500, easy_img)
-medium_button = Button(200, 550, medium_img)
-hard_button = Button(200, 600, hard_img)
+easy_button = Button(100, 500, easy_img)
+medium_button = Button(100, 550, medium_img)
+hard_button = Button(100, 600, hard_img)
 
 def get_row_col_from_mouse(pos):
     x, y = pos
@@ -40,7 +40,10 @@ def main():
          # level text        
         pygame.init()
         font = pygame.font.Font('assets/8-BIT WONDER.TTF', 16)
-        textLevel = font.render('Level :'+ level, True, BOARDA)
+        textLevel = font.render('Level ' + level, True, BOARDA)
+        textLevelEasy = font.render('Easy ', True, BOARDA)
+        textLevelMedium = font.render('Medium ', True, BOARDA)
+        textLevelHard = font.render('Hard ', True, BOARDA)
 
         # if gm.get_run_main() == False:
         if gm.playing == True:
@@ -51,10 +54,15 @@ def main():
                 play = True
 
             exit_button = Button(WIDTH//2+SQUARE_SIZE, WIDTH+(SQUARE_SIZE+PADDING)*2, game.get_text_exit())
-            WIN.blit(textLevel, (PADDING, WIDTH+(SQUARE_SIZE+PADDING)*2))          
+            WIN.blit(textLevel, (PADDING, WIDTH+(SQUARE_SIZE+PADDING)*2)) 
+            WIN.blit(textLevelEasy, (155, 505))      
+            WIN.blit(textLevelMedium, (155, 552)) 
+
+            WIN.blit(textLevelHard, (155, 605))
             
             if random_button.draw(WIN):
                 game = Game(WIN, True)
+
 
             if restart_button.draw(WIN):
                 game = Game(WIN, False) 
